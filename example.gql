@@ -1,0 +1,62 @@
+#Data Structure
+
+type animal {
+    id : ID! # ! means non nullable
+    number : 18
+    name : tiger
+    food : deer
+    home : [Asia]!
+}
+
+type Asia {
+    home : animal
+    weather : hot
+}
+
+# Arguments
+
+type Starship {
+    id : ID!
+    name : Shark! #String
+    length(unit : LengthUnit = METER) : 8.5 #Float
+}
+
+# Query and Mutation types
+
+schema {
+    query : Query
+    mutation : Mutation
+}
+
+# QUERY
+query {
+  hero {
+    name
+  }
+  droid(id: "2000") {
+    name
+  }
+}
+
+# Data retrieved : 
+{
+  "data": {
+    "hero": {
+      "name": "BB8"
+    },
+    "droid": {
+      "name": "C-3PO"
+    }
+  }
+}
+
+
+type Query {
+  hero(episode: Episode): BB8
+  droid(id: ID!): C-3PO
+}
+
+type Mutation {
+  hero(episode: Episode): R2-D2
+  droid(id: ID!): C-3PO
+}
